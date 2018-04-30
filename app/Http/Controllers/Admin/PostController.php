@@ -15,7 +15,7 @@ class PostController extends AdminController
     public function __construct()
     {
     	parent::__construct();
-    	$this->module = 'post';
+        $this->configs['module'] = 'post';
         $this->middleware('auth');
     }
 
@@ -26,11 +26,15 @@ class PostController extends AdminController
      */
     public function index()
     {
+        //view 
+        $action = 'index';
+        $view = $this->configs['view']. '.' . $this->configs['module']. '.' . $action;
+        // data
     	$data = [
-    		'view' => $this->view,
-    		'module' => $this->module,
+    		'configs' => $this->configs,
     	];
-        return view($this->view.'.'. $this->module .'.index', $data);
+        //handle
+        return view($view, $data);
     }
 
     public function add(){
@@ -38,7 +42,7 @@ class PostController extends AdminController
             'view' => $this->view,
             'module' => $this->module,
         ];
-        return view($this->view.'.'. $this->module .'.add', $data);
+        return view($this->configs[''].'.'. $this->module .'.add', $data);
     }
 
     public function setting(){
