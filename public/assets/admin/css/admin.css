@@ -1,0 +1,8 @@
+.required{
+	color: red;
+	font-style: italic;
+}
+.error{
+	color: red;
+	font-style: italic;
+}
